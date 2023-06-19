@@ -1,0 +1,23 @@
+#main-page-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#main-page-header NavLink, #main-page-header a {
+    display: flex;
+    border: black solid;
+    flex-grow: 1;
+    justify-content: center;
+    background-color: #732f43;
+    color: inherit;
+}
+
+#main-page-header NavLink:hover, #main-page-header a:hover {
+    background-color: #2f733d;
+}
+
+
+#main-page-header #teste {
+    flex-grow: 2;
+}

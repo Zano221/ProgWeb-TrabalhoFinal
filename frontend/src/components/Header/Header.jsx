@@ -1,11 +1,13 @@
 import "./Header.css"
+import { NavLink } from "react-router-dom"
 
 export default function Header() {
     return(
-        <header class="header" id="main-page-header">
-            <a href="#"> HOME </a>
-            <a href="#"> HOME 2 </a>
-            <a href="#"> HOME 3< /a>
+        <header className="header" id="main-page-header">
+            <NavLink to="/"> HOME </NavLink>
+            <NavLink to="/"> LISTA DE VITIMAS </NavLink>
+            <NavLink to="/registrar"> REGISTRAR </NavLink>
+            <NavLink to="/"> ENTRAR </NavLink>
         </header>
     )
 }
