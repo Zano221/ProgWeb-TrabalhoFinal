@@ -74,7 +74,7 @@ export default function RegistrarPage() {
                     <div className="register-tag"><p>Senha novamente</p> <p className="error-msg" id="senha-rep-error"></p></div>
                     <input className="register-input" placeholder="Digite sua senha novamente" id="input-senha-rep"/>
                 </div>
-                <button title="Registrar" onClick={register}>Registrar</button>
+                <button title="Registrar" id="botao-registrar" onClick={register}>Registrar</button>
             </section>
             <Footer />
         </div>

@@ -1,0 +1,13 @@
+#vitima-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#tabela-vitimas td {
+    padding: 0;
+    border: solid white;
+}
