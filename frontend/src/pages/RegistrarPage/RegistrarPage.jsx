@@ -1,8 +1,24 @@
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
 import './RegistrarPage.css'
+import axios from "axios";
 
-function register() {
+async function submit(func) {
+
+    console.log("\n\n\n\n\n\n", func.email, func.nome, func.senha, "\n\n\n\n");
+
+    const { data } = await axios.post('http://localhost:6969/funcionario', {
+        data: {
+            email: func.email,
+            nome: func.nome,
+            senha: func.senha
+        }
+    })
+
+    return data;
+}
+
+async function register() {
     const email = document.getElementById("input-email").value;
     const nome = document.getElementById("input-nome").value;
     const senha = document.getElementById("input-senha").value;
@@ -15,10 +31,12 @@ function register() {
 
     const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
+    let canRegister = true;
 
     if(email === '' || !emailRegex.test(email)) {
         emailError.innerText = "Email Invalido!"
         emailError.style.visibility = "visible"
+        canRegister = false
     }
     else {
         emailError.style.visibility = "hidden"
@@ -27,6 +45,7 @@ function register() {
     if(nome === '') {
         nomeError.innerText = "Nome Invalido!"
         nomeError.style.visibility = "visible"
+        canRegister = false
     }
     else {
         nomeError.style.visibility = "hidden"
@@ -35,6 +54,7 @@ function register() {
     if(senha === '') {
         senhaError.innerText = "Senha Invalida!"
         senhaError.style.visibility = "visible"
+        canRegister = false
     }
     else {
         senhaError.style.visibility = "hidden"
@@ -42,10 +62,23 @@ function register() {
 
     if(senha != senhaRep) {
         alert("As senhas devem ser identicas!")
+        canRegister = false
     }
     else {
         senhaError.style.visibility = "hidden"
     }
+
+    if(!canRegister) return;
+
+    console.log('pica!')
+
+    const result = await submit({
+        email,
+        nome,
+        senha
+    })
+
+    console.log(result);
 
 }
 
