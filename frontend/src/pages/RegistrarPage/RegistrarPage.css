@@ -45,6 +45,7 @@
     font-size: 2ex;
     border-radius: 5px;
     color: black;
+    padding: 5px;
 }
 
 .error-msg {
