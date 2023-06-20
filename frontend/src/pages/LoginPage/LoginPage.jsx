@@ -2,6 +2,7 @@ import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import axios from "axios";
 import "./LoginPage.css"
+import { useNavigate } from "react-router-dom";
 
 async function submit(func) {
 
@@ -13,6 +14,7 @@ async function submit(func) {
 }
 
 async function login() {
+
     const email = document.getElementById("input-email").value;
     const senha = document.getElementById("input-senha").value;
 
@@ -45,15 +47,37 @@ async function login() {
 
     console.log('pica!')
 
-    const result = await submit({
-        email,
-        senha
-    })
+    let result = null
+    try {
+        result = await submit({
+            email,
+            senha
+        })
+    }
+    catch(e) {
+        console.error("\n\n\nErro ao fazer Login!", e , "\n\n\n");
+        return;
+    }
+    
+    
+    localStorage.setItem('ID', result.ID_FUNC);
+    localStorage.setItem('nome', result.NOME_FUNC);
+    localStorage.setItem('email', result.EMAIL_FUNC);
+    localStorage.setItem('senha', result.SENHA_FUNC);
+    localStorage.setItem('isLogged', true);
 
-    console.log(result);
+    console.log(localStorage.getItem('isLogged'))
+
 }
 
 export default function LoginPage() {
+
+    if(localStorage.getItem('isLogged')) {
+        const navigate = useNavigate();
+        const handleClick = () => navigate(-1)
+        handleClick();
+    }
+
     return(
         <div id="login-page">
             <Header />

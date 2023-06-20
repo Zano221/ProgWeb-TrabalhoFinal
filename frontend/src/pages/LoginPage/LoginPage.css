@@ -46,6 +46,8 @@
     border-radius: 5px;
     color: black;
     padding: 5px;
+    border-color: black;
+    border-style: solid;
 }
 
 .error-msg {
