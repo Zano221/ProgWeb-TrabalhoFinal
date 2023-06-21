@@ -21,3 +21,9 @@
 #main-page-header #teste {
     flex-grow: 2;
 }
+
+.selectedNavLink {
+    background-color: #2f4373;
+    color: black;
+    border-color:  #2f4373;
+}

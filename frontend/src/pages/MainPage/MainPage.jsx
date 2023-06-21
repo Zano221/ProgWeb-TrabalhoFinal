@@ -4,6 +4,7 @@ import Footer from "../../components/Footer/Footer"
 import "./MainPage.css"
 
 export default function MainPage() {
+    console.log(localStorage.getItem('isLogged'))
     return(
         <div id="main-page">
             <Header id="header" />

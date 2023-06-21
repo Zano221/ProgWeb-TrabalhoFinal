@@ -2,6 +2,7 @@ import MainPage from './pages/MainPage/MainPage'
 import RegistrarPage from './pages/RegistrarPage/RegistrarPage'
 import LoginPage from './pages/LoginPage/LoginPage'
 import FuncionarioPage from './pages/FuncionarioPage/FuncionarioPage'
+import Logout from './pages/LogoutPage/LogoutPage'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import VitimaPage from './pages/VitimaPage/VitimaPage'
@@ -17,6 +18,7 @@ function App() {
       <Route path='/registrar' element={<RegistrarPage />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/funcionario-page' element={<FuncionarioPage />} />
+      <Route path='/logout' element={<Logout />} />
       </Routes>
     </BrowserRouter>
   )

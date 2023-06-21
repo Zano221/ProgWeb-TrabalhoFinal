@@ -2,7 +2,7 @@ import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import axios from "axios";
 import "./LoginPage.css"
-import { redirect, Redirect, useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 async function submit(func) {
@@ -68,10 +68,17 @@ async function login() {
     localStorage.setItem('isLogged', true);
 
     console.log(localStorage.getItem('isLogged'))
-
+    alert('Seja bem Vindo!')
 }
 
 export default function LoginPage() {
+    let navigate = useNavigate()
+    let isLogged = localStorage.getItem('isLogged')
+
+    useEffect(() => {
+        if(isLogged) navigate('/', {replace: true})
+    }, [localStorage.getItem('isLogged')])
+
     return(
         <div id="login-page">
             <Header />
