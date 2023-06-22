@@ -1,6 +1,7 @@
 #funcionario-page {
     width: 100%;
     height: 100%;
+    display: flex;
     flex-flow: column;
     justify-content: space-between;
     align-items: center;
@@ -9,11 +10,61 @@
 #funcionario-page-main {
     display: flex;
     flex-flow: row;
-    height: 90%;
+    height: 100%;
+    width: 100%
 }
 
 #side-nav {
-    background-color: crimson;
+    background-color: rgba(220, 20, 60, 0.863);
     height: 100%;
     width: 15%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+#side-nav a, #side-nav NavLink {
+    width: 100%;
+    display: flex;
+    border-bottom: white;
+    border-bottom-style:groove;
+    padding: 0;
+    color: white;
+    padding-top: 10px;
+}
+
+#side-nav a p, #side-nav NavLink p {
+    margin: 0;
+    margin-left: 5px;
+}
+
+#side-nav a:hover, #side-nav NavLink:hover {
+    background-color: rgba(209, 84, 109, 0.863);
+}
+
+#nav-body {
+    display: flex;
+    width: 100%;
+    height: 83%;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    
+}
+
+#working-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#button-adicionar-vitima {
+    width: 175px;
+    height: 175px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-evenly;
 }

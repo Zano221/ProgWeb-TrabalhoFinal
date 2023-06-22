@@ -1,7 +1,7 @@
 export default function Footer() {
     return(
         <footer>
-            CopyRight CASAS OVSKasdaaddadsads
+            CopyRight CASAS OVISK
         </footer>
     )
 }
