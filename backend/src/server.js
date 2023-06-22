@@ -1,7 +1,7 @@
 import sequelize from './db/db.js'
 import express from 'express';
 import cors from 'cors';
-import { Funcionario } from './db/models.js';
+import { Funcionario, Vitima } from './db/models.js';
 import { Op } from 'sequelize';
 
 const app = express();
@@ -42,6 +42,20 @@ app.get('/funcionario/:email/:password', async (req, res) => {
         res.send(result);
 })
 
+app.get('/vitimas', async (req, res) => {
+
+        let result = null;
+        try {
+            result = await Vitima.findAll();
+        }
+        catch(e) {
+            result = e
+            console.error("\n\nErro ao comunicar com o banco de dados: ", e, "\n\n");
+        }
+
+        res.send(result);
+})
+
 
 //POST
 app.post('/funcionario', async(req, res) => {
@@ -66,7 +80,81 @@ app.post('/funcionario', async(req, res) => {
     res.send(result);
 })
 
+app.post('/vitima', async (req, res) => {
+
+    const nome = req.body.data.nome;
+    const cidade = req.body.data.cidade
+
+    let result = null;
+    try {
+        result = await Vitima.create({
+            NOME_VITI: nome,
+            CIDADE_VITI: cidade
+        });
+    }
+    catch(e) {
+        result = e
+        console.error("\n\nErro ao comunicar com o banco de dados: ", e, "\n\n");
+    }
+
+    res.send(result);
+})
+
 //PUT
+
+app.put('/funcionario/:email/:password', async (req, res) => {
+        
+    const email = req.params.email;
+    const password = req.params.password;
+
+    const func = req.body.data;
+
+    let result = null;
+    try {
+        result = await Funcionario.findOne(
+            { where: {
+                [Op.and]: [
+                    { EMAIL_FUNC: email},
+                    { SENHA_FUNC: password}
+                ]
+            } })
+            
+        if(result != null) {
+            result = Funcionario.update({
+                EMAIL_FUNC: func.email,
+                NOME_FUNC: func.nome,
+                SENHA_FUNC: func.senha
+            } ,{
+                where: {
+                    [Op.and]: [
+                        {EMAIL_FUNC: email},
+                        {SENHA_FUNC: password}
+                    ]
+                }
+            })
+        }
+    }
+    catch(e) {
+        result = e
+        console.error("\n\nErro ao comunicar com o banco de dados: ", e, "\n\n");
+    }
+
+    res.send(result);
+})
+
+app.put('/vitimas', async (req, res) => {
+
+    let result = null;
+    try {
+        result = await Vitima.findAll();
+    }
+    catch(e) {
+        result = e
+        console.error("\n\nErro ao comunicar com o banco de dados: ", e, "\n\n");
+    }
+
+    res.send(result);
+})
 
 //DELETE
 
