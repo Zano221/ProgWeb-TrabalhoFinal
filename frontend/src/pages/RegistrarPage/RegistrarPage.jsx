@@ -1,5 +1,7 @@
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import './RegistrarPage.css'
 import axios from "axios";
 
@@ -18,72 +20,80 @@ async function submit(func) {
     return data;
 }
 
-async function register() {
-    const email = document.getElementById("input-email").value;
-    const nome = document.getElementById("input-nome").value;
-    const senha = document.getElementById("input-senha").value;
-    const senhaRep = document.getElementById("input-senha-rep").value;
-
-    const emailError = document.getElementById("email-error")
-    const nomeError = document.getElementById("nome-error")
-    const senhaError = document.getElementById("senha-error")
-    const senhaRepError = document.getElementById("senha-rep-error")
-
-    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-
-    let canRegister = true;
-
-    if(email === '' || !emailRegex.test(email)) {
-        emailError.innerText = "Email Invalido!"
-        emailError.style.visibility = "visible"
-        canRegister = false
-    }
-    else {
-        emailError.style.visibility = "hidden"
-    }
-
-    if(nome === '') {
-        nomeError.innerText = "Nome Invalido!"
-        nomeError.style.visibility = "visible"
-        canRegister = false
-    }
-    else {
-        nomeError.style.visibility = "hidden"
-    }
-
-    if(senha === '') {
-        senhaError.innerText = "Senha Invalida!"
-        senhaError.style.visibility = "visible"
-        canRegister = false
-    }
-    else {
-        senhaError.style.visibility = "hidden"
-    }
-
-    if(senha != senhaRep) {
-        alert("As senhas devem ser identicas!")
-        canRegister = false
-    }
-    else {
-        senhaError.style.visibility = "hidden"
-    }
-
-    if(!canRegister) return;
-
-    console.log('pica!')
-
-    const result = await submit({
-        email,
-        nome,
-        senha
-    })
-
-    console.log(result);
-    alert('Seja Bem Vindo! Por favor, realize o login para prosseguir')
-
-}
 
 export default function RegistrarPage() {
+    let navigate = useNavigate()
+    let isLogged = localStorage.getItem('isLogged')
+
+    useEffect(() => {
+        if(isLogged) navigate('/', {replace: true})
+    }, [navigate])
+
+    async function register() {
+        const email = document.getElementById("input-email").value;
+        const nome = document.getElementById("input-nome").value;
+        const senha = document.getElementById("input-senha").value;
+        const senhaRep = document.getElementById("input-senha-rep").value;
+    
+        const emailError = document.getElementById("email-error")
+        const nomeError = document.getElementById("nome-error")
+        const senhaError = document.getElementById("senha-error")
+        const senhaRepError = document.getElementById("senha-rep-error")
+    
+        const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    
+        let canRegister = true;
+    
+        if(email === '' || !emailRegex.test(email)) {
+            emailError.innerText = "Email Invalido!"
+            emailError.style.visibility = "visible"
+            canRegister = false
+        }
+        else {
+            emailError.style.visibility = "hidden"
+        }
+    
+        if(nome === '') {
+            nomeError.innerText = "Nome Invalido!"
+            nomeError.style.visibility = "visible"
+            canRegister = false
+        }
+        else {
+            nomeError.style.visibility = "hidden"
+        }
+    
+        if(senha === '') {
+            senhaError.innerText = "Senha Invalida!"
+            senhaError.style.visibility = "visible"
+            canRegister = false
+        }
+        else {
+            senhaError.style.visibility = "hidden"
+        }
+    
+        if(senha != senhaRep) {
+            alert("As senhas devem ser identicas!")
+            canRegister = false
+        }
+        else {
+            senhaError.style.visibility = "hidden"
+        }
+    
+        if(!canRegister) return;
+    
+        console.log('pica!')
+    
+        const result = await submit({
+            email,
+            nome,
+            senha
+        })
+    
+        console.log(result);
+        alert('Seja Bem Vindo! Por favor, realize o login para prosseguir')
+        navigate('/', {replace: true})
+    }
+
     return(
         <div id="registrar-page">
             <Header />

@@ -14,41 +14,6 @@ async function removerConta(senha) {
     return data;
 }
 
-async function deletar() {
-    const senha = document.getElementById("input-delete-senha").value;
-
-    console.log(senha)
-    const senhaError = document.getElementById("senha-error") 
-
-    if(senha == '') {
-        senhaError.innerText = "Senha Invalida!"
-        senhaError.style.visibility = "visible"
-        canLogin = false
-    }
-    else {
-        senhaError.style.visibility = "hidden"
-    }
-
-    let result = null
-    try {
-        result = await removerConta(senha);
-    }
-    catch(e) {
-        console.error('Erro ao executar o banco de dados!', e)
-    }
-
-    if(result == null) {
-        alert('Erro! Senha errada!');
-    }
-    else {
-        alert('Sua conta foi removida com sucesso! Sentiremos saudades!')
-        localStorage.clear();
-        navigate("/", { replace: true });
-    }
-
-    
-}
-
 export default function FuncionarioDeletarPage() {
 
     let navigate = useNavigate()
@@ -58,6 +23,41 @@ export default function FuncionarioDeletarPage() {
             navigate("/", { replace: true });
         }
       }, []);
+
+      async function deletar() {
+        const senha = document.getElementById("input-delete-senha").value;
+    
+        console.log(senha)
+        const senhaError = document.getElementById("senha-error") 
+    
+        if(senha == '') {
+            senhaError.innerText = "Senha Invalida!"
+            senhaError.style.visibility = "visible"
+            canLogin = false
+        }
+        else {
+            senhaError.style.visibility = "hidden"
+        }
+    
+        let result = null
+        try {
+            result = await removerConta(senha);
+        }
+        catch(e) {
+            console.error('Erro ao executar o banco de dados!', e)
+        }
+    
+        if(result == null) {
+            alert('Erro! Senha errada!');
+        }
+        else {
+            alert('Sua conta foi removida com sucesso! Sentiremos saudades!')
+            localStorage.clear();
+            navigate("/", { replace: true });
+        }
+    
+        
+    }
 
     return(
         <div id="funcionario-page">
