@@ -25,12 +25,19 @@ async function update() {
     let nomeField = document.getElementById("input-edit-nome").value
     let senhaField = document.getElementById("input-edit-senha").value
 
-    const result = await submit({
-        email,
-        nome,
-        senha
-    })
-
+    const result = null
+    try {
+        result = await submit({
+            email,
+            nome,
+            senha
+        })
+    
+    }
+    catch(e) {
+        alert('Erro ao executar atualização', e);
+    }
+    
     if(result != null) alert("Funcionario atualizado com sucesso!");
 
 }
@@ -65,27 +72,29 @@ export default function FuncionarioEditarPage() {
             
             <main id='funcionario-page-main'>
                 <SideNav />
-                <div id='working-area'>
-                    <section id="edit-card">
-                            <h1>Editar Conta</h1>
-                            
-                            <div className="edit-input-field" id="edit-card-email">
-                                <div className="edit-tag"><p>Email</p> <p className="error-msg" id="edit-email-error"></p></div>
-                                <input className="edit-input" placeholder="email" id="input-edit-email"/>
-                            </div>
+                <div id='main-area'>
+                    <div id='working-area'>
+                        <section id="edit-card">
+                                <h1>Editar Conta</h1>
+                                
+                                <div className="edit-input-field" id="edit-card-email">
+                                    <div className="edit-tag"><p>Email</p> <p className="error-msg" id="edit-email-error"></p></div>
+                                    <input className="edit-input" placeholder="email" id="input-edit-email"/>
+                                </div>
 
-                            <div className="edit-input-field" id="edit-card-email">
-                                <div className="edit-tag"><p>Email</p> <p className="error-msg" id="email-error"></p></div>
-                                <input className="edit-input" placeholder="email" id="input-edit-nome"/>
-                            </div>
+                                <div className="edit-input-field" id="edit-card-email">
+                                    <div className="edit-tag"><p>Email</p> <p className="error-msg" id="email-error"></p></div>
+                                    <input className="edit-input" placeholder="email" id="input-edit-nome"/>
+                                </div>
 
-                            <div className="edit-input-field" id="edit-card-email">
-                                <div className="edit-tag"><p>Email</p> <p className="error-msg" id="email-error"></p></div>
-                                <input className="edit-input" placeholder="email" id="input-edit-senha"/>
-                            </div>
+                                <div className="edit-input-field" id="edit-card-email">
+                                    <div className="edit-tag"><p>Email</p> <p className="error-msg" id="email-error"></p></div>
+                                    <input className="edit-input" placeholder="email" id="input-edit-senha"/>
+                                </div>
 
-                            <button title="Login" id="botao-login" onClick={update}>Salvar</button>
-                        </section>
+                                <button title="Login" id="botao-login" onClick={update}>Salvar</button>
+                            </section>
+                        </div>
                     <Footer />
                 </div>
             </main>

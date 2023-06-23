@@ -9,7 +9,9 @@ export default function SideNav() {
         <div id='side-nav'>
                 <div id='nav-body'>
                     <NavLink to='/'><p>🏠 Home</p></NavLink>
-                    {(location.pathname == '/funcionario-editar-page' || location.pathname == '/funcionario-deletar-page') &&
+                    {(location.pathname == '/funcionario-editar-page' || 
+                    location.pathname == '/funcionario-deletar-page' ||
+                    location.pathname == '/vitima-adicionar') &&
                     <NavLink to='/funcionario-page'><p>⏪ Voltar </p></NavLink>
                     }
                     <NavLink to='/funcionario-editar-page'><p>✎ Editar Conta</p></NavLink>

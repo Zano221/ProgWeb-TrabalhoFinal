@@ -5,6 +5,7 @@
     display: flex;
     flex-flow: column wrap;
     align-items: center;
+    min-width: 245px;
 }
 
 #side-nav a, #side-nav NavLink {

@@ -14,11 +14,20 @@
     width: 100%
 }
 
+#main-area {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 #working-area {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    flex-grow: 1;
 }
 
 #delete-card {
@@ -33,4 +42,9 @@
     color: rgb(43, 43, 43);
     border-color: black;
     border-style: solid;
+}
+
+
+.error-msg {
+    color: rgba(255, 0, 0, 0.575)
 }

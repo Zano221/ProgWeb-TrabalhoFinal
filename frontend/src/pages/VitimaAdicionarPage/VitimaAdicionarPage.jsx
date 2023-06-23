@@ -10,22 +10,24 @@ export default function VitimaAdicionarPage() {
             
             <main id='funcionario-page-main'>
                 <SideNav />
-                <div id='working-area'>
-                    <section id="edit-card">
-                            <h1>Adicionar Vitima</h1>
-                            
-                            <div className="vitima-input-field" id="vitima-card-nome">
-                                <div className="vitima-tag"><p>Nome</p> <p className="error-msg" id="edit-email-error"></p></div>
-                                <input className="vitima-input" placeholder="nome" id="input-vitima-nome"/>
-                            </div>
+                <div id='main-area'>
+                    <div id='working-area'>
+                        <section id="edit-card">
+                                <h1>Adicionar Vitima</h1>
+                                
+                                <div className="vitima-input-field" id="vitima-card-nome">
+                                    <div className="vitima-tag"><p>Nome</p> <p className="error-msg" id="edit-email-error"></p></div>
+                                    <input className="vitima-input" placeholder="nome" id="input-vitima-nome"/>
+                                </div>
 
-                            <div className="vitima-input-field" id="vitima-card-cidade">
-                                <div className="vitima-tag"><p>Cidade</p> <p className="error-msg" id="email-error"></p></div>
-                                <input className="vitima-input" placeholder="email" id="input-edit-nome"/>
-                            </div>
+                                <div className="vitima-input-field" id="vitima-card-cidade">
+                                    <div className="vitima-tag"><p>Cidade</p> <p className="error-msg" id="email-error"></p></div>
+                                    <input className="vitima-input" placeholder="email" id="input-edit-nome"/>
+                                </div>
 
-                            <button title="Login" id="botao-login" >Adicionar</button>
-                        </section>
+                                <button title="Login" id="botao-login" >Adicionar</button>
+                            </section>
+                        </div>
                     <Footer />
                 </div>
             </main>

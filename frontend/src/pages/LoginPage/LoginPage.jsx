@@ -69,6 +69,9 @@ async function login() {
 
     console.log(localStorage.getItem('isLogged'))
     alert('Seja bem Vindo!')
+    let navigate = useNavigate()
+    navigate('/', {replace: true})
+
 }
 
 export default function LoginPage() {

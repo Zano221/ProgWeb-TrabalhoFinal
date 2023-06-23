@@ -79,6 +79,7 @@ async function register() {
     })
 
     console.log(result);
+    alert('Seja Bem Vindo! Por favor, realize o login para prosseguir')
 
 }
 
