@@ -21,11 +21,11 @@ async function submit(func) {
 
 async function update() {
 
-    let emailField = document.getElementById("input-edit-email").value
-    let nomeField = document.getElementById("input-edit-nome").value
-    let senhaField = document.getElementById("input-edit-senha").value
+    let email = document.getElementById("input-edit-email").value
+    let nome = document.getElementById("input-edit-nome").value
+    let senha = document.getElementById("input-edit-senha").value
 
-    const result = null
+    let result = null
     try {
         result = await submit({
             email,
@@ -36,9 +36,15 @@ async function update() {
     }
     catch(e) {
         alert('Erro ao executar atualização', e);
+        console.log(e)
     }
     
-    if(result != null) alert("Funcionario atualizado com sucesso!");
+    if(result != null) {
+        alert("Funcionario atualizado com sucesso!");
+        localStorage.setItem('email', email);
+        localStorage.setItem('nome', nome);
+        localStorage.setItem('senha', senha);
+    } 
 
 }
 
@@ -83,12 +89,12 @@ export default function FuncionarioEditarPage() {
                                 </div>
 
                                 <div className="edit-input-field" id="edit-card-email">
-                                    <div className="edit-tag"><p>Email</p> <p className="error-msg" id="email-error"></p></div>
+                                    <div className="edit-tag"><p>Nome</p> <p className="error-msg" id="email-error"></p></div>
                                     <input className="edit-input" placeholder="email" id="input-edit-nome"/>
                                 </div>
 
                                 <div className="edit-input-field" id="edit-card-email">
-                                    <div className="edit-tag"><p>Email</p> <p className="error-msg" id="email-error"></p></div>
+                                    <div className="edit-tag"><p>Senha</p> <p className="error-msg" id="email-error"></p></div>
                                     <input className="edit-input" placeholder="email" id="input-edit-senha"/>
                                 </div>
 

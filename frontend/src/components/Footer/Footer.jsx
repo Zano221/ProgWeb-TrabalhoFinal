@@ -1,7 +1,7 @@
 export default function Footer() {
     return(
         <footer>
-            CopyRight CASAS OVISK
+            Copyright 2023, Jão Corp em parceria com as casas Ovisk
         </footer>
     )
 }

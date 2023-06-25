@@ -1,8 +1,16 @@
 #main-page {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-flow: column wrap;
     width: 100%;
     height: 100%;
-  }
+}
+
+#sessao-titulo-principal {
+    grid-column: 2;
+}
+
+#sessao-proposito {
+    grid-column: 2;
+} 
