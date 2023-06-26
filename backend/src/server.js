@@ -102,51 +102,26 @@ app.post('/vitima', async (req, res) => {
 
 //PUT
 
-app.put('/funcionario/:email/:password', async (req, res) => {
-        
-    const email = req.params.email;
-    const password = req.params.password;
+app.put('/funcionario/:email/:senha', async (req, res) => {
 
+    const emailAntigo = req.params.email;
+    const senhaAntiga = req.params.senha;
     const func = req.body.data;
 
     let result = null;
     try {
-        result = await Funcionario.findOne(
-            { where: {
+        result = await Funcionario.update({
+            EMAIL_FUNC: func.email,
+            NOME_FUNC: func.nome,
+            SENHA_FUNC: func.senha
+        } ,{
+            where: {
                 [Op.and]: [
-                    { EMAIL_FUNC: email},
-                    { SENHA_FUNC: password}
+                    {EMAIL_FUNC: emailAntigo},
+                    {SENHA_FUNC: senhaAntiga}
                 ]
-            } })
-            
-        if(result != null) {
-            result = Funcionario.update({
-                EMAIL_FUNC: func.email,
-                NOME_FUNC: func.nome,
-                SENHA_FUNC: func.senha
-            } ,{
-                where: {
-                    [Op.and]: [
-                        {EMAIL_FUNC: email},
-                        {SENHA_FUNC: password}
-                    ]
-                }
-            })
-        }
-    }
-    catch(e) {
-        result = e
-        console.error("\n\nErro ao comunicar com o banco de dados: ", e, "\n\n");
-    }
-
-    res.send(result);
-})
-
-app.put('/vitimas', async (req, res) => {
-
-    let result = null;
-    try {
-        result = await Vitima.findAll();
+            }
+        })
     }
     catch(e) {
         result = e
@@ -158,6 +133,31 @@ app.put('/vitimas', async (req, res) => {
 
 //DELETE
 
+app.delete('/funcionario/:email/:password', async (req, res) => {
+    const email = req.params.email;
+    const password = req.params.password;
+  
+    let result = null;
+    try {
+      await Funcionario.destroy({
+        where: {
+          [Op.and]: [
+            { EMAIL_FUNC: email },
+            { SENHA_FUNC: password }
+          ]
+        }
+      });
+  
+      result = true
+    } catch (e) {
+      result = e;
+      console.error("\n\nErro ao comunicar com o banco de dados: ", e, "\n\n");
+    }
+  
+    res.send(result);
+  });
 
 //RUN
 app.listen(port, () => "Server running on port 6969")
+
+export default app
