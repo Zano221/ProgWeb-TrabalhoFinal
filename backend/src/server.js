@@ -64,6 +64,7 @@ app.post('/funcionario', async(req, res) => {
     const senha = req.body.senha
 
     console.log("\n\n\n\n\n\n", email, nome, senha, "\n\n\n\n");
+    console.log(req.body)
 
     let result = null
     try {
