@@ -8,10 +8,8 @@ import './VitimaAdicionarPage.css'
 async function submit(viti) {
 
     const { data } = await axios.post('http://localhost:6969/vitima', {
-        data: {
-            nome: viti.nome,
-            cidade: viti.cidade,
-        }
+        nome: viti.nome,
+        cidade: viti.cidade,
     })
 
     return data;

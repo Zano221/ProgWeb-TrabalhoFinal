@@ -10,12 +10,10 @@ async function submit(func) {
 
     const emailAntigo = localStorage.getItem('email');
     const senhaAntiga = localStorage.getItem('senha');
-    const { data } = await axios.put('http://localhost:6969/funcionario' + emailAntigo + '/' + senhaAntiga, {
-        data: {
-            email: func.email,
-            nome: func.nome,
-            senha: func.senha
-        }
+    const { data } = await axios.put('http://localhost:6969/funcionario/' + emailAntigo + '/' + senhaAntiga, {
+        email: func.email,
+        nome: func.nome,
+        senha: func.senha
     })
 
     return data;

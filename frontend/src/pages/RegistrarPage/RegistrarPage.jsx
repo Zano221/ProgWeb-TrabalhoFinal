@@ -10,11 +10,9 @@ async function submit(func) {
     console.log("\n\n\n\n\n\n", func.email, func.nome, func.senha, "\n\n\n\n");
 
     const { data } = await axios.post('http://localhost:6969/funcionario', {
-        data: {
-            email: func.email,
-            nome: func.nome,
-            senha: func.senha
-        }
+        email: func.email,
+        nome: func.nome,
+        senha: func.senha
     })
 
     return data;

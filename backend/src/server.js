@@ -59,9 +59,9 @@ app.get('/vitimas', async (req, res) => {
 
 //POST
 app.post('/funcionario', async(req, res) => {
-    const email = req.body.data.email;
-    const nome = req.body.data.nome;
-    const senha = req.body.data.senha
+    const email = req.body.email;
+    const nome = req.body.nome;
+    const senha = req.body.senha
 
     console.log("\n\n\n\n\n\n", email, nome, senha, "\n\n\n\n");
 
@@ -82,8 +82,8 @@ app.post('/funcionario', async(req, res) => {
 
 app.post('/vitima', async (req, res) => {
 
-    const nome = req.body.data.nome;
-    const cidade = req.body.data.cidade
+    const nome = req.body.nome;
+    const cidade = req.body.cidade;
 
     let result = null;
     try {
@@ -106,7 +106,7 @@ app.put('/funcionario/:email/:senha', async (req, res) => {
 
     const emailAntigo = req.params.email;
     const senhaAntiga = req.params.senha;
-    const func = req.body.data;
+    const func = req.body;
 
     let result = null;
     try {
