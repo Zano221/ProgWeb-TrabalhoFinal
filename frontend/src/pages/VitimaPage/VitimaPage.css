@@ -7,7 +7,39 @@
     align-items: center;
 }
 
+#tabela-vitimas {
+    display: flex;
+    flex-flow: column;
+    width: 70%;
+}
+
+#tabela-vitimas thead {
+    display: flex;
+    flex-flow: column;
+    width: 100%; 
+}
+
+#tabela-vitimas tr {
+    justify-content: space-around;
+    display: flex;
+}
+
+#tabela-vitimas th {
+    border: white solid;
+    width: 50%;
+}
+
 #tabela-vitimas td {
     padding: 0;
     border: solid white;
+    width: 50%;
+    text-align: center;
+}
+
+#tabela-vitimas th, #tabela-vitimas td {
+    font-size: 1.25em;
+}
+
+#tabela-vitimas tr:hover {
+    background-color: #4a5674;
 }

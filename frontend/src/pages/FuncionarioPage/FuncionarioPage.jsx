@@ -1,11 +1,12 @@
 import Footer from "../../components/Footer/Footer";
 import SideNav from "../../components/SideNav/SideNav";
+import { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import './FuncionarioPage.css'
 
 export default function FuncionarioPage() {
     
-    navigate = useNavigate()
+    let navigate = useNavigate()
 
     useEffect(() => {
         if(!localStorage.getItem('isLogged')) navigate('/', {replace: true})

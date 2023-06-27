@@ -43,7 +43,6 @@ export default function VitimaPage() {
           <thead>
             <tr>
               <th>Nome</th>
-              <th>Idade</th>
               <th>Cidade</th>
             </tr>
           </thead>

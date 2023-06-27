@@ -14,66 +14,6 @@ async function submit(func) {
     return data;
 }
 
-async function login() {
-
-    const email = document.getElementById("input-email").value;
-    const senha = document.getElementById("input-senha").value;
-
-    const emailError = document.getElementById("email-error")
-    const senhaError = document.getElementById("senha-error")
-
-    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-
-    let canLogin = true;
-
-    if(email === '' || !emailRegex.test(email)) {
-        emailError.innerText = "Email Invalido!"
-        emailError.style.visibility = "visible"
-        canLogin = false
-    }
-    else {
-        emailError.style.visibility = "hidden"
-    }
-
-    if(senha === '') {
-        senhaError.innerText = "Senha Invalida!"
-        senhaError.style.visibility = "visible"
-        canLogin = false
-    }
-    else {
-        senhaError.style.visibility = "hidden"
-    }
-
-    if(!canLogin) return;
-
-    console.log('pica!')
-
-    let result = null
-    try {
-        result = await submit({
-            email,
-            senha
-        })
-    }
-    catch(e) {
-        console.error("\n\n\nErro ao fazer Login!", e , "\n\n\n");
-        return;
-    }
-    
-    
-    localStorage.setItem('ID', result.ID_FUNC);
-    localStorage.setItem('nome', result.NOME_FUNC);
-    localStorage.setItem('email', result.EMAIL_FUNC);
-    localStorage.setItem('senha', result.SENHA_FUNC);
-    localStorage.setItem('isLogged', true);
-
-    console.log(localStorage.getItem('isLogged'))
-    alert('Seja bem Vindo!')
-    let navigate = useNavigate()
-    navigate('/', {replace: true})
-
-}
-
 export default function LoginPage() {
     let navigate = useNavigate()
     let isLogged = localStorage.getItem('isLogged')
@@ -128,6 +68,10 @@ export default function LoginPage() {
             return;
         }
         
+        if(result.EMAIL_FUNC == null || result.SENHA_FUNC == null) {
+            alert("Erro! Usuario ou Senha incorretos!");
+            return;
+        }
         
         localStorage.setItem('ID', result.ID_FUNC);
         localStorage.setItem('nome', result.NOME_FUNC);
